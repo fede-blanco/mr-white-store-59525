@@ -22,9 +22,9 @@ const CategoriesScreen = ({navigation}) => {
   const { data: categories, error, isLoading } = useGetCategoriesQuery()
 
   // Hacemos un log para ver si obtiene la información
-  // console.log("categories from firebase", categories);
-  // console.log("error from firebase", error);
-  // console.log("isLoading from firebase", isLoading);
+  console.log("categories from firebase", categories);
+  console.log("error from firebase", error);
+  console.log("isLoading from firebase", isLoading);
   
 
 

@@ -55,7 +55,7 @@ const LoginScreen = ({navigation}) => {
 
     return (
         <LinearGradient
-            colors={['#400962', '#11001B']}
+            colors={['#400962', '#fcae76']}
             start={{ x: 0, y: 0 }} // esquina superior izquierda
             end={{ x: 1, y: 1 }}   // esquina inferior derecha
             style={styles.gradient}
@@ -87,7 +87,7 @@ const LoginScreen = ({navigation}) => {
                     ?
                     <Pressable onPress={() => setRememberMe(!rememberMe)}><Icon name="toggle-on" size={48} color={colors.verdeNeon} /></Pressable>
                     :
-                    <Pressable onPress={() => setRememberMe(!rememberMe)}><Icon name="toggle-off" size={48} color={colors.grisClaro} /></Pressable>
+                    <Pressable onPress={() => setRememberMe(!rememberMe)}><Icon name="toggle-off" size={48} color={colors.grisOscuro} /></Pressable>
                 }
             </View>
 
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
         padding: 8,
         paddingLeft: 16,
         borderRadius: 16,
-        backgroundColor: "#95859E",
+        backgroundColor: colors.grisOscuro,
         width: textInputWidth,
         color: colors.blanco,
     },

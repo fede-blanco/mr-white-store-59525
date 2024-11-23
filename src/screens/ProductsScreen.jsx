@@ -6,6 +6,7 @@ import {
   Text,
   View,
   ActivityIndicator,
+  useWindowDimensions,
 } from "react-native"
 import products from "../data/products.json"
 import FlatCard from "../components/FlatCard.jsx"
@@ -20,13 +21,22 @@ import { setProductSelectedId } from "../features/shop/shopSlice.js"
 
 import { useGetProductsByCategoryQuery } from "../services/shopService.js"
 
+
 const ProductsScreen = ({ navigation, route }) => {
   // const [productsTagFiltered, setProductsTagFiltered ] = useState([])
   const [productsFiltered, setProductsFiltered] = useState([])
   const [search, setSearch] = useState("")
-
+  // const [widthState, setWidthState] = useState("")
+  
   //creamos la variable "dispatch" de la cual luego utilizaremos todos los métodos que contiene
   const dispatch = useDispatch()
+  
+  
+  const {width, height} = useWindowDimensions()
+  // useEffect(() => {
+  //   setWidthState(width)
+
+  // }, [])
 
 
 
@@ -89,10 +99,10 @@ const ProductsScreen = ({ navigation, route }) => {
           />
         </View>
         <View>
-          <MontserratText style={styles.productTitle}>
+          <MontserratText style={styles.productTitle(width)}>
             {item.title}
           </MontserratText>
-          <Text style={styles.shortDescriptionStyles}>
+          <Text style={styles.shortDescriptionStyles(width)}>
             {item.shortDescription}
           </Text>
           <FlatList
@@ -207,12 +217,12 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
   },
-  productTitle: {
+  productTitle: (width) => ({
     fontFamily: "Montserrat",
-    width: "60%",
+    width: width * 0.6,
     fontWeight: "bold",
     fontSize: 18,
-  },
+  }),
   mainFlatListStyles: {
     // marginTop: 10,
     paddingTop: 11,
@@ -230,9 +240,9 @@ const styles = StyleSheet.create({
     gap: 10,
     marginVertical: 10,
   },
-  shortDescriptionStyles: {
-    width: "40%",
-  },
+  shortDescriptionStyles: (width) => ({
+    width: width * 0.6,
+  }),
   discountText: {
     backgroundColor: colors.verde,
     paddingHorizontal: 8,

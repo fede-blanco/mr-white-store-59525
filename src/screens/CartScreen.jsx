@@ -7,7 +7,7 @@ import { colors } from "../global/colors.js"
 import { useSelector, useDispatch } from "react-redux"
 import { usePostReceiptMutation } from "../services/receiptService.js"
 
-import { clearCart } from "../features/cart/cartSlice.js"
+import { clearCart, removeCartItem } from "../features/cart/cartSlice.js"
 
 
 //paso el navigation como parámetro para utilizarlo para ir a la pagina de recibos una vez generado el pago
@@ -23,6 +23,10 @@ const CartScreen = ({navigation}) => {
   const cartLenght = useSelector(state=>state.cartReducer.value.cartLenght)
   console.log("cartLenght --> ", cartLenght);
   console.log("cart --> ", cart);
+
+  //seteamos que el valor de user sea el email del usuario logueado
+  const user = useSelector(state => state.authReducer.value.email)
+  console.log("Estado 'user' CartScreen --> ", user);
   
 
 
@@ -31,7 +35,7 @@ const CartScreen = ({navigation}) => {
 
   // Desestructuramos el resultado devuelto por el hook  de RTK Query
   const [ triggerPost, result ] = usePostReceiptMutation()
-  console.log("\n\nRESULT DEL HOOK -->\n", result, "\n\n");
+  console.log("\n\nRESULT DEL HOOK CartScreen -->\n", result, "\n\n");
   
 
 
@@ -45,7 +49,7 @@ const CartScreen = ({navigation}) => {
         <Pressable style={styles.confirmButton}
           onPress={() => {
             // Ejecutamos el post y mandamos por parametro un objeto con las características que querramos
-            triggerPost({cart,total, createdAt: Date.now()})
+            triggerPost({cart,user,total, createdAt: Date.now()})
             // Limpiamos el carrito
             dispatch(clearCart())
             // el nombre que va es el de la tab-navigation de recibos, no el de recibos directamente
@@ -74,12 +78,16 @@ const CartScreen = ({navigation}) => {
         <Text style={styles.price}>Precio unitario: $ {item.price}</Text>
         <Text stlyle={styles.quantity}>Cantidad: {item.quantity}</Text>
         <Text style={styles.total}>Total: $ {item.quantity * item.price}</Text>
+        <Pressable style={styles.trashIcon} 
+        onPress={()=> dispatch(removeCartItem(item.id))}
+        >
+
         <Icon
           name="delete"
-          size={24}
-          color="#FC7A5E"
-          style={styles.trashIcon}
-        />
+          size={32}
+          color="#ff3c3c"
+          />
+          </Pressable>
       </View>
     </FlatCard>
   )
@@ -118,7 +126,8 @@ const styles = StyleSheet.create({
   },
   cartImage: {
     width: 80,
-    height: 80,
+    height: 140,
+    objectFit: "contain",
   },
   cartDescription: {
     width: "80%",
@@ -138,7 +147,8 @@ const styles = StyleSheet.create({
   },
   trashIcon: {
     alignSelf: "flex-end",
-    marginRight: 16,
+    marginBottom: -16,
+    marginTop: -32,
   },
   footerContainer: {
     padding: 32,

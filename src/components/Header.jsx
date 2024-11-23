@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { clearUser } from '../features/auth/authSlice' // Reseteamos el usuario del estado global
 import { clearSessions } from '../db' // Borramos el usuario de la base de datos
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 export default function Header({route, tag, category}) {
   console.log("category 1", category || "");
 
@@ -23,7 +25,13 @@ export default function Header({route, tag, category}) {
   }
   
   return (
-    <View style={styles.headerContainer}>
+    <LinearGradient
+            colors={['#400962', '#fcae76']}
+            start={{ x: 0, y: 0 }} // esquina superior izquierda
+            end={{ x: 1, y: 1 }}   // esquina inferior derecha
+            style={styles.headerContainer}
+        >
+    {/* <View style={styles.headerContainer}> */}
       <Text style={styles.title}>Mundo Geek FB</Text>
       <MontserratText style={styles.subtitle}>Conseguí todo lo que necesitás</MontserratText>
       {
@@ -45,7 +53,8 @@ export default function Header({route, tag, category}) {
         user &&  <Pressable onPress={onLogout} style={styles.access}><Icon name="logout" size={24} color="#fff" /></Pressable>
       }
 
-    </View>
+    {/* </View> */}
+    </LinearGradient>
   )
 }
 

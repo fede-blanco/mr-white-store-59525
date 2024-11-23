@@ -50,7 +50,7 @@ const SignupScreen = ({navigation}) => {
 
     return (
         <LinearGradient
-            colors={['#400962', '#11001B']}
+            colors={['#400962', '#fcae76']}
             start={{ x: 0, y: 0 }} // esquina superior izquierda
             end={{ x: 1, y: 1 }}   // esquina inferior derecha
             style={styles.gradient}
@@ -72,13 +72,13 @@ const SignupScreen = ({navigation}) => {
                     // Cuando se establece secureTextEntry en true, el texto ingresado en el campo se muestra como una serie de puntos (****) en lugar del texto real.
                     secureTextEntry
                 />
-                <TextInput
+                {/* <TextInput
                     onChangeText={(text) => setConfirmPassword(text)} //Setea el estado
                     placeholderTextColor="#EBEBEB"
                     placeholder='Repetir password'
                     style={styles.textInput}
                     secureTextEntry
-                />
+                /> */}
             </View>
             <View style={styles.footTextContainer}>
                 <Text style={styles.whiteText}>¿Ya tienes una cuenta?</Text>
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
         padding: 8,
         paddingLeft: 16,
         borderRadius: 16,
-        backgroundColor: "#95859E",
+        backgroundColor: colors.grisOscuro,
         width: textInputWidth,
         color: colors.blanco,
     },

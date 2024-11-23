@@ -44,8 +44,22 @@ export const cartSlice = createSlice({
       // sumo 1 al numero de elementos del carrito al agregra un producto
       state.value.cartLenght += 1
     },
-    removeItem:(state,action) => {
-      state.value.cartItems = state.value.cartItems.filter(item=item.id!==action.payload)
+    removeCartItem:(state,action) => {
+      console.log("ingreso a removecartItem en el slice -- state 1");
+      // state.value.cartItems = state.value.cartItems.filter(item => item.id !== action.payload)
+      state.value.cartItems = state.value.cartItems.map(item => {
+        if (item.id === action.payload) {
+          if (item.quantity > 1) {
+            // Si la cantidad es mayor a 1, decrementa en 1
+            item.quantity -= 1;
+          } else {
+            // Si la cantidad es 1, elimina el item
+            return null; // Los elementos que retornan null son filtrados por el array
+          }
+        }
+        return item; // Devolvemos el item sin cambios si no coincide el id
+      }).filter(item => item !== null); //Se crea un array con todos los items que no sean null
+      console.log("ingreso a removecartItem en el slice -- state 2");
       state.value.total = calculate_total_price(state.value.cartItems)
       state.value.cartLenght -= 1
     },
@@ -57,7 +71,7 @@ export const cartSlice = createSlice({
   }
 })
 
-export const {addItem, removeItem, clearCart} = cartSlice.actions
+export const {addItem, removeCartItem, clearCart} = cartSlice.actions
 
 //exporto por default la función "reducer" de la slice creada
 export default cartSlice.reducer

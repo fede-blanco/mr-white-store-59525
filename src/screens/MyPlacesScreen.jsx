@@ -13,7 +13,8 @@ const MyPlacesScreen = () => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [title, setTitle] = useState("")
-  const [places, setPlaces] = useState([{ "id": 1, "title": "Geek Out! Argentina", "coords": {"latitude":-34.555579051686586,"longitude":-58.461540799929494},"address":"Blanco Encalada 2518, C1425 Cdad. Autónoma de Buenos Aires" },{ "id": 2, "title": "Fuera de tiempo", "coords": {"latitude":-34.54776236446238,"longitude":-58.5538693790271},"address":"Blanco Encalada 2518, C1425 Cdad. Autónoma de Buenos Aires" }])
+  const [places, setPlaces] = useState([])
+  // const [places, setPlaces] = useState([{ "id": 1, "title": "Geek Out! Argentina", "coords": {"latitude":-34.555579051686586,"longitude":-58.461540799929494},"address":"Blanco Encalada 2518, C1425 Cdad. Autónoma de Buenos Aires" },{ "id": 2, "title": "Fuera de tiempo", "coords": {"latitude":-34.54776236446238,"longitude":-58.5538693790271},"address":"Blanco Encalada 2518, C1425 Cdad. Autónoma de Buenos Aires" }])
   const [address, setAddress] = useState("")
 
   // useEffect(() => {
@@ -163,11 +164,18 @@ const MyPlacesScreen = () => {
     </View>
     <Text style={styles.subtitle}>Tus lugares favoritos:</Text>
     {/* Lista con los lugares favoritos en tarjetas */}
-    <FlatList
+    <>
+    {places.length > 0
+    ?
+  <FlatList
         data={places}
         keyExtractor={item => item.id}
         renderItem={renderPlaceItem}
     />
+    :
+    <View style={styles.favoritosEmpty}><Text style={styles.favoritosEmptyText} >Aún no hay lugares favoritos!</Text></View>
+  }
+    </>
     <Toast />
       {/* <Text style={styles.paragraph}>{text}</Text> */}
     </View>
@@ -233,6 +241,14 @@ const styles = StyleSheet.create({
   placeDescriptionContainer: {
     width: '60%',
     padding: 8
-  }
+  },
+  favoritosEmpty:{
+      flex:1,
+      justifyContent:'center',
+      alignItems: 'center'
+  },
+  favoritosEmptyText:{
+      fontSize: 16
+  },
 });
 
