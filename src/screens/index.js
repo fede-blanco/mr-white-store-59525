@@ -9,4 +9,6 @@ export { default as CartScreen } from './CartScreen.jsx'
 export { default as ReceiptsScreen } from './ReceiptsScreen.jsx'
 export { default as LoginScreen } from './LoginScreen.jsx'
 export { default as SignupScreen } from './SignupScreen.jsx'
+export { default as MyPlacesScreen } from './MyPlacesScreen.jsx'
+export { default as ProfileScreen } from './ProfileScreen.jsx'
 

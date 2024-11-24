@@ -32,7 +32,7 @@ export default function Header({route, tag, category}) {
             style={styles.headerContainer}
         >
     {/* <View style={styles.headerContainer}> */}
-      <Text style={styles.title}>Mundo Geek FB</Text>
+      <Text style={styles.title}>Mr.White store</Text>
       <MontserratText style={styles.subtitle}>Conseguí todo lo que necesitás</MontserratText>
       {
         route && tag === "" && category === ""

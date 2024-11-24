@@ -60,7 +60,7 @@ const LoginScreen = ({navigation}) => {
             end={{ x: 1, y: 1 }}   // esquina inferior derecha
             style={styles.gradient}
         >
-            <Text style={styles.title}>Mundo Geek</Text>
+            <Text style={styles.title}>Mr.White store</Text>
             <Text style={styles.subTitle}>Ingresa</Text>
             <View style={styles.inputContainer}>
                 <TextInput

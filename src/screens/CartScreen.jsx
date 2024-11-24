@@ -157,8 +157,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   footerTotal: {
-    fontSize: 16,
+    fontSize: 28,
     fontWeight: "700",
+    marginTop: -18
   },
   confirmButton: {
     padding: 8,

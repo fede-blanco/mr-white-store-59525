@@ -3,11 +3,12 @@ import receipts from "../data/receipts.json"
 import FlatCard from "../components/FlatCard"
 import { colors } from "../global/colors"
 import Icon from "react-native-vector-icons/MaterialIcons"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import {
   useGetReceiptsByUserQuery,
   useGetReceiptsQuery,
 } from "../services/receiptService.js"
+import { useEffect } from "react"
 
 const ReceiptsScreen = () => {
   //seteamos que el valor de user sea el email del usuario logueado
@@ -15,8 +16,8 @@ const ReceiptsScreen = () => {
   console.log("Estado 'user' ReceiptsScreen --> ", user)
 
   // const { data: receiptsFilteredByUser, error, isLoading } = useGetReceiptsByUserQuery(user)
-  const { data: allReceipts, error, isLoading } = useGetReceiptsQuery()
-  console.log("Estado 'allReceipts' ReceiptsScreen --> ", allReceipts)
+  // const { data: allReceipts, error, isLoading } = useGetReceiptsQuery()
+  // console.log("Estado 'allReceipts' ReceiptsScreen --> ", allReceipts)
   const {
     data: receiptsByUser,
     errorReceiptsByUser,
@@ -26,6 +27,13 @@ const ReceiptsScreen = () => {
     "Estado 'receiptsFilteredByUser' ReceiptsScreen --> ",
     receiptsByUser
   )
+
+  const dispatch = useDispatch();
+
+  // Fetch receipts on component mount (or when user changes)
+  // useEffect(() => {
+  //   dispatch(useGetReceiptsByUserQuery(user)); // Dispatch the action
+  // }, [dispatch, user]);
 
   const renderReceiptItem = ({ item }) => {
     console.log("item to render", item)
@@ -76,7 +84,7 @@ const ReceiptsScreen = () => {
       :
       <FlatList
       data={receiptsByUser}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.createdAt}
       renderItem={renderReceiptItem}
     />
     }

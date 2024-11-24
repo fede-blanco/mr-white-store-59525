@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import MyPlacesScreen from "../screens/MyPlacesScreen.jsx"
+import { MyPlacesScreen } from "../screens/index.js"
 import Header from "../components/Header.jsx"
 
 const MyPlacesStack = createNativeStackNavigator()

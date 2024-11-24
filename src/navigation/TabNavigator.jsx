@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator()
 
 export default function TabNavigator() {
   return (
-    // <NavigationContainer>
+    
       <Tab.Navigator
         initialRouteName="tab-shop"
         screenOptions={{
@@ -28,40 +28,39 @@ export default function TabNavigator() {
         <Tab.Screen
           name="tab-shop"
           options={{ title: "Shop",
-            tabBarIcon: ({focused}) => (<Icon name="storefront" size={32} color={focused?colors.grisOscuro:colors.grisMedio}  />)
+            tabBarIcon: ({focused}) => (<Icon name="storefront" size={32} color={focused?colors.morado:colors.grisMedio}  />)
            }}
           component={ShopNavigator}
         />
         <Tab.Screen
           name="tab-carrito"
           options={{ title: "Carrito",
-            tabBarIcon: ({focused}) => (<Icon name="shopping-cart" size={32} color={focused?colors.grisOscuro:colors.grisMedio}  />)
+            tabBarIcon: ({focused}) => (<Icon name="shopping-cart" size={32} color={focused?colors.morado:colors.grisMedio}  />)
             }}
           component={CartNavigator}
         />
         <Tab.Screen
           name="tab-recibos"
           options={{ title: "Recibos",
-            tabBarIcon: ({focused}) => (<Icon name="receipt-long" size={32} color={focused?colors.grisOscuro:colors.grisMedio}  />)
+            tabBarIcon: ({focused}) => (<Icon name="receipt-long" size={32} color={focused?colors.morado:colors.grisMedio}  />)
             }}
           component={ReceiptsNavigator}
         />
         <Tab.Screen
           name="tab-perfil"
           options={{ title: "Perfil",
-            tabBarIcon: ({focused}) => (<Icon name="account-circle" size={32} color={focused?colors.grisOscuro:colors.grisMedio}  />)
+            tabBarIcon: ({focused}) => (<Icon name="account-circle" size={32} color={focused?colors.morado:colors.grisMedio}  />)
             }}
           component={ProfileNavigator}
         />
         <Tab.Screen
           name="tab-my-places"
           options={{ title: "Mis lugares",
-            tabBarIcon: ({focused}) => (<Icon name="location-on" size={32} color={focused?colors.grisOscuro:colors.grisMedio}  />)
+            tabBarIcon: ({focused}) => (<Icon name="location-on" size={32} color={focused?colors.morado:colors.grisMedio}  />)
             }}
           component={MyPlacesNavigator}
         />
       </Tab.Navigator>
-    // </NavigationContainer>
   )
 }
 
@@ -70,6 +69,8 @@ const styles = StyleSheet.create({
   tabBar: {
     height: 64,
     backgroundColor: colors.grisClaro,
+    // backgroundColor: colors.morado,
+    // backgroundColor: "transparent",
     // -- Estilos para hacer boton flotante --
     // position: 'absolute',
     // bottom:25,

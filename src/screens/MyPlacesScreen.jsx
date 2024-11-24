@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   subtitle: {
-    fontSize: 12,
+    fontSize: 16,
     color: colors.grisOscuro
   },
   inputContainer: {
