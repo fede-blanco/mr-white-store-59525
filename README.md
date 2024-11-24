@@ -1,5 +1,6 @@
 <h1> Mr.White Store :copyright: | Ecommerce Mobile App :rocket: </h1>
-<h4>Tienda de artículos creada con `react-native` para el `curso de desarrollo de aplicaciones mobiles - comisión 59525` - `Coderhouse 2024`</h4>
+
+Tienda de artículos creada con `react-native` Y `Expo` para el `curso de desarrollo de aplicaciones mobiles - comisión 59525` - `Coderhouse 2024`
 
 ---
 
@@ -27,7 +28,7 @@
 ---
 
 > [!IMPORTANT]
-> Herramientas Utilizadas :crystal_ball:
+> HERRAMIENTAS UTILIZADAS :crystal_ball:
 
 * **HTML5** -----------------------> Uso de forma mínima en el index y en las etiquetas semánticas junto a la escritura en jsx.
 * **CSS** ---------------------------> Para dar los estilos.
@@ -75,14 +76,16 @@
 ![Play Store](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)
 ![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)
 
+<br>
 <hr>
 
-> Instalación y Run :cd:
+> INSTALACIÓN Y RUN :cd:
 
 * Clonar el repositorio: git clone https://github.com/fede-blanco/mr-white-store-59525.git
 * Instalar las dependencias: npm install
 * Iniciar la aplicación: npx expo start
 
+<br>
 <hr>
 
 > CAPTURAS :camera:
@@ -109,7 +112,7 @@
 
 | **Lugares favoritos** | **Toast de ubicación encontrada** | **Nuevo lugar favorito** | 
 |:--:|:--:|:--:|
-| ![Lugares favoritos](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_lugares_favoritos_1.png?raw=true) | ![Toast de ubicación encontrada](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_lugares_favoritos_2.png?raw=true) | ![Cámara](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_lugares_favoritos_3.png?raw=true) |
+| ![Lugares favoritos](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_lugares_favoritos_1.png?raw=true) | ![Toast de ubicación encontrada](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_lugares_favoritos_2.png?raw=true) | ![Nuevo lugar favorito](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_lugares_favoritos_3.png?raw=true) |
 
 <br><br>
 <hr>
