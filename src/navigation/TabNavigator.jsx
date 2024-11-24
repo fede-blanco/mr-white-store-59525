@@ -10,7 +10,7 @@ import Header from "../components/Header.jsx"
 import ProfileNavigator from "./ProfileNavigator.jsx"
 import MyPlacesNavigator from "./MyPlacesNavigator.jsx"
 
-// Este en vez de ser un "nativeStackNavigator" es un "BottomTabNavigator"
+// En vez de ser un "nativeStackNavigator" es un "BottomTabNavigator"
 const Tab = createBottomTabNavigator()
 
 export default function TabNavigator() {
@@ -20,7 +20,6 @@ export default function TabNavigator() {
         initialRouteName="tab-shop"
         screenOptions={{
           headerShown: false,
-          // header: ({route}) => <Header route={route.name} category={route.params?.category || ""} tag={""} /> ,
           tabBarShowLabel: false,
           tabBarStyle: styles.tabBar,
         }}
@@ -69,14 +68,5 @@ const styles = StyleSheet.create({
   tabBar: {
     height: 64,
     backgroundColor: colors.grisClaro,
-    // backgroundColor: colors.morado,
-    // backgroundColor: "transparent",
-    // -- Estilos para hacer boton flotante --
-    // position: 'absolute',
-    // bottom:25,
-    // left: 20,
-    // right: 20,
-    // borderRadius: 10,
-    // elevation: 4,
   }
 })

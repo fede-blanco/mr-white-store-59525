@@ -1,6 +1,6 @@
 
-//Realizo las exportaciones de las funciones (componentes) exportadas por default en esos archivos y dandoles el nombre con el cual se exportará (que será el nombre de cada componente)
-
+// Realizo las exportaciones de las funciones (componentes) exportadas por default en esos archivos
+// y dandoles el nombre con el cual se exportará (que será el nombre de cada componente)
 
 export { default as CategoriesScreen } from './CategoriesScreen.jsx'
 export { default as ProductsScreen } from './ProductsScreen.jsx'

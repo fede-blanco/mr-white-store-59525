@@ -12,10 +12,10 @@ const ProfileScreen = () => {
     const user = useSelector(state=>state.authReducer.value.email)
     const image = useSelector(state=>state.authReducer.value.profilePicture) // Para luego mostrar dicha imagen
     const localId = useSelector(state=>state.authReducer.value.localId)
-    //Inicializo dispatch para poder modificar las variables mediante los métodos
+    // Inicializo dispatch para poder modificar las variables mediante los métodos
     const dispatch = useDispatch()
 
-    //utilizamos el hook para tener acceso a al método triggerPutProfilePicture
+    // Se utiliza el hook para tener acceso a al método triggerPutProfilePicture
     const [triggerPutProfilePicture,result] = usePutProfilePictureMutation()
 
     // Es una función asíncrona que te pedirá por medio de la librería el acceso a la cámara del dispositivo
@@ -25,9 +25,10 @@ const ProfileScreen = () => {
         return true
     }
 
-    // Función asíncrona que verifica si tenemos acceso a la cámara y la galería y setea una imagen obtenida como formato Base64 en la variable de estado de "profilePicture" de "authSlice"
+    // Función asíncrona que verifica si se tiene acceso a la cámara y setea una imagen obtenida como formato Base64 en
+    // la variable de estado de "profilePicture" de "authSlice"
     const pickImage = async () => {
-        // Creamos una variable que determinará si se tienen los permisos para ingresar a la camara.
+        // Se crea una variable que determinará si se tienen los permisos para ingresar a la camara.
         const permissionOk = await verifyCameraPermissions()
         if(permissionOk){
             console.log("Permisos concedidos")
@@ -39,18 +40,15 @@ const ProfileScreen = () => {
                 base64: true,
                 quality: 0.7
             })
-            //console.log(result)
             // result.canceled sería true en caso de que se cierre la camera en vez de tomar una foto y aceptar
             if(!result.canceled){
                 // Se setea en el estado
                 dispatch(setProfilePicture(`data:image/jpeg;base64,${result.assets[0].base64}`))
                 // Se guarda en firebase
-                triggerPutProfilePicture({image: `data:image/jpeg;base64,${result.assets[0].base64}`,localId})
-                console.log();
-                
+                triggerPutProfilePicture({image: `data:image/jpeg;base64,${result.assets[0].base64}`,localId})                
             }
         }else{
-            //console.log("Permisos denegados")
+            console.log("Permisos denegados")
         }
     }
     

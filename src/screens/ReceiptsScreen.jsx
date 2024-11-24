@@ -1,23 +1,14 @@
 import { StyleSheet, Text, FlatList, View } from "react-native"
-import receipts from "../data/receipts.json"
 import FlatCard from "../components/FlatCard"
-import { colors } from "../global/colors"
-import Icon from "react-native-vector-icons/MaterialIcons"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import {
   useGetReceiptsByUserQuery,
-  useGetReceiptsQuery,
 } from "../services/receiptService.js"
-import { useEffect } from "react"
 
 const ReceiptsScreen = () => {
-  //seteamos que el valor de user sea el email del usuario logueado
+  // Se setea que el valor de user sea el email del usuario logueado
   const user = useSelector((state) => state.authReducer.value.email)
-  console.log("Estado 'user' ReceiptsScreen --> ", user)
 
-  // const { data: receiptsFilteredByUser, error, isLoading } = useGetReceiptsByUserQuery(user)
-  // const { data: allReceipts, error, isLoading } = useGetReceiptsQuery()
-  // console.log("Estado 'allReceipts' ReceiptsScreen --> ", allReceipts)
   const {
     data: receiptsByUser,
     errorReceiptsByUser,
@@ -28,18 +19,9 @@ const ReceiptsScreen = () => {
     receiptsByUser
   )
 
-  const dispatch = useDispatch();
-
-  // Fetch receipts on component mount (or when user changes)
-  // useEffect(() => {
-  //   dispatch(useGetReceiptsByUserQuery(user)); // Dispatch the action
-  // }, [dispatch, user]);
-
   const renderReceiptItem = ({ item }) => {
-    console.log("item to render", item)
-    // let total = item.items.reduce((acumulador, item) => (acumulador += item.quantity * item.price), 0)
 
-    // Creamos el objeto options con los formatos configurados para que nos de lahora como queremos
+    // Se crea el objeto options con los formatos configurados para que nos de lahora como queremos
     dateOptions = {
       year: "numeric", // Muestra el año
       month: "2-digit", // Muestra el mes en formato de 2 dígitos
@@ -69,7 +51,6 @@ const ReceiptsScreen = () => {
         <Text>
           <Text style={styles.total}>Total: </Text>
           ${item.total} - </Text>
-        {/* <Icon name="visibility" size={24} color={colors.grisOscuro} style={styles.viewIcon} /> */}
       </FlatCard>
     )
   }
@@ -112,9 +93,6 @@ const styles = StyleSheet.create({
   total: {
     fontSize: 16,
     fontWeight: "700",
-  },
-  viewIcon: {
-    alignSelf: "flex-end",
   },
   receiptEmpty:{
       flex:1,

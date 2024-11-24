@@ -8,7 +8,6 @@ import {
   ActivityIndicator,
   useWindowDimensions,
 } from "react-native"
-import products from "../data/products.json"
 import FlatCard from "../components/FlatCard.jsx"
 import { colors } from "../global/colors.js"
 import MontserratText from "../components/MontserratText.jsx"
@@ -23,40 +22,26 @@ import { useGetProductsByCategoryQuery } from "../services/shopService.js"
 
 
 const ProductsScreen = ({ navigation, route }) => {
-  // const [productsTagFiltered, setProductsTagFiltered ] = useState([])
   const [productsFiltered, setProductsFiltered] = useState([])
   const [search, setSearch] = useState("")
-  // const [widthState, setWidthState] = useState("")
   
-  //creamos la variable "dispatch" de la cual luego utilizaremos todos los métodos que contiene
+  // Se crea la variable "dispatch" de la cual luego se utilizarán todos los métodos que contiene
   const dispatch = useDispatch()
   
-  
   const {width, height} = useWindowDimensions()
-  // useEffect(() => {
-  //   setWidthState(width)
-
-  // }, [])
-
-
-
-  // console.log("route", route);
 
   const categorySelected = useSelector(
     (state) => state.shopReducer.value.categorySelected
   )
-  // const productsFilteredByCategory = useSelector(state => state.shopReducer.value.productsFilteredByCategory)
 
-  // traemos la información utilizando el hook de RTK Query que devuelve 3 elementos.
-  // la información almacenada en la base de datos devuelta por la petición se aloja en "data" la cual podemos renombrar para que se plique a todas las existencias de "productsFilteredByCategory" ya utilizadas.
+  // Se trae la información utilizando el hook de RTK Query que devuelve 3 elementos.
+  // La información almacenada en la base de datos devuelta por la petición se aloja en "data" la cual se puede
+  // renombrar para que se plique a todas las existencias de "productsFilteredByCategory" ya utilizadas.
   const {
     data: productsFilteredByCategory,
     error,
     isLoading,
   } = useGetProductsByCategoryQuery(categorySelected.toLowerCase())
-
-  // console.log("categorySelected:", categorySelected)
-  // console.log("productsFilteredByCategory:", productsFilteredByCategory)
 
   useEffect(() => {
     setProductsFiltered(productsFilteredByCategory)
@@ -67,26 +52,7 @@ const ProductsScreen = ({ navigation, route }) => {
         )
       )
     }
-    // Agregamos @productsFilteredByCategory@ al array de dependencias para que se vuelva a renderizar al conseguir los datos
   }, [search, productsFilteredByCategory])
-
-  // useEffect(() => {
-  //   console.log("tag: ",tag);
-  //     // console.log("productsTagFiltered:");
-  // // productsTagFiltered.forEach(product => {
-  // //   console.log(`${product.title}:  ${product.tags}`);
-  // // });
-
-  //   const tagFilteredProducts = []
-
-  //   products.forEach(product => {
-  //     if(product.tags.includes(tag)){
-  //       tagFilteredProducts.push(product)
-  //     }
-  //   })
-  //   setProductsTagFiltered(tagFilteredProducts)
-
-  // },[tag,setTag])
 
   const renderProductItem = ({ item }) => {
     return (
@@ -176,23 +142,12 @@ const ProductsScreen = ({ navigation, route }) => {
 
           <Search setSearch={setSearch} />
 
-          {/* {
-        tag !== ""
-        ?
-      <FlatList
-      data={productsTagFiltered}
-      keyExtractor={(item) => item.id}
-      renderItem={renderProductItem}
-      style={styles.mainFlatListStyles}
-      />
-        : */}
           <FlatList
             data={productsFiltered}
             keyExtractor={(item) => item.id}
             renderItem={renderProductItem}
             style={styles.mainFlatListStyles}
           />
-          {/* } */}
         </>
       
       )}

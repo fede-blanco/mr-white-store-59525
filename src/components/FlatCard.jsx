@@ -2,7 +2,8 @@ import { StyleSheet, Text, View } from 'react-native'
 import { colors } from '../global/colors'
 
 
-// IMPORTANTE --> prop especial "style" sirve para que en conjunto con la utilización de spread operator podamos agregar unos estilos aquí y se sumen a los estilos que luego eljamos poner al utilizar el componente FlatCard
+// IMPORTANTE --> prop especial "style" sirve para que en conjunto con la utilización de spread operator
+// podamos agregar unos estilos aquí y se sumen a los estilos que luego eljamos poner al utilizar el componente FlatCard
 const FlatCard = ({children,style}) => {
   return (
     <View style={{...styles.cardContainer,...style}}>

@@ -9,9 +9,6 @@ const ReceiptsNavigator = () => {
   return (
     <ReceiptStack.Navigator 
     screenOptions={{
-      
-      // headerShown: false,
-      
       header: ({route}) => <Header route={route.name} category={route.params?.category || ""} tag={""} /> ,
     }}>
       <ReceiptStack.Screen component={ReceiptsScreen} name="recibos" />

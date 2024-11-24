@@ -1,6 +1,5 @@
 import { FlatList, Image, Pressable, StyleSheet, Text, View } from "react-native"
-import React, { useEffect, useState } from "react"
-import cart from "../data/cart.json"
+import React from "react"
 import FlatCard from "../components/FlatCard.jsx"
 import Icon from "react-native-vector-icons/MaterialIcons"
 import { colors } from "../global/colors.js"
@@ -12,47 +11,33 @@ import { clearCart, removeCartItem } from "../features/cart/cartSlice.js"
 
 //paso el navigation como parámetro para utilizarlo para ir a la pagina de recibos una vez generado el pago
 const CartScreen = ({navigation}) => {
-
-  // const [total, setTotal] = useState(0)
-
-  // Traemos los items del cart del store de redux
+  // Traigo los items del cart del store de redux
   const cart = useSelector(state => state.cartReducer.value.cartItems)
-  // traemos el total del carrito desde el store de redux
+  // Traigo el total del carrito desde el store de redux
   const total = useSelector(state=>state.cartReducer.value.total)
-  // traemos el largo del carrito desde el store de redux
+  // Traigo el largo del carrito desde el store de redux
   const cartLenght = useSelector(state=>state.cartReducer.value.cartLenght)
-  console.log("cartLenght --> ", cartLenght);
-  console.log("cart --> ", cart);
 
-  //seteamos que el valor de user sea el email del usuario logueado
+  // Seteo que el valor de user sea el email del usuario logueado
   const user = useSelector(state => state.authReducer.value.email)
-  console.log("Estado 'user' CartScreen --> ", user);
-  
 
-
-  // Inicializo la variable dispatch para poder utilizar métodos de algun slice de redux
+  // Inicializo la variable dispatch para poder utilizar métodos de algun "slice" de redux
   const dispatch = useDispatch()
 
   // Desestructuramos el resultado devuelto por el hook  de RTK Query
   const [ triggerPost, result ] = usePostReceiptMutation()
-  console.log("\n\nRESULT DEL HOOK CartScreen -->\n", result, "\n\n");
   
-
-
-//   useEffect(()=>{
-//     setTotal(cart.reduce((acumulador, item)=>(acumulador+=item.price*item.quantity),0))
-// },[cart])
 
   const FooterComponent = () => (
     <View style={styles.footerContainer}>
         <Text style={styles.footerTotal}>Total: $ {total} </Text>
         <Pressable style={styles.confirmButton}
           onPress={() => {
-            // Ejecutamos el post y mandamos por parametro un objeto con las características que querramos
+            // Se ejecuta el post y mandamos por parametro un objeto con las características que querramos
             triggerPost({cart,user,total, createdAt: Date.now()})
-            // Limpiamos el carrito
+            // Se limpia el carrito
             dispatch(clearCart())
-            // el nombre que va es el de la tab-navigation de recibos, no el de recibos directamente
+            // El nombre que va es el de la tab-navigation de recibos (no el de recibos directamente)
             navigation.navigate("tab-recibos")
           }}
         >

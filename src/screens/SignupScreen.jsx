@@ -18,15 +18,9 @@ const SignupScreen = ({navigation}) => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
-    console.log("email state --->\n", email);
-    console.log("password state --->\n", password);
-    
-
-
-    // funciones y variables que se desprenden del hook creado para registrarse de rtk query. Triggersignup ejecuta la función y result obtiene un objeto con propiedades e info sobre elk resultado de la misma
+    // Funciones y variables que se desprenden del hook creado para registrarse de rtk query. Triggersignup ejecuta la función
+    // y result obtiene un objeto con propiedades e info sobre elk resultado de la misma
     const [triggerSignup, result] = useSignupMutation()
-    console.log("\nResult:\n---\n", result, "\n---\n");
-    
 
     const dispatch = useDispatch()
 
@@ -42,9 +36,7 @@ const SignupScreen = ({navigation}) => {
 
     // Función que se ejecuta al hacer submit en el botón
     const onsubmit = ()=>{
-        // enviamos un mensaje por consola con la información del formulario
-        console.log("email\n",email,"password\n",password,"confirmPassword\n",confirmPassword)
-        // se ejecuta la funcion triggersignup del hook con un objeto con propiedades "email" y "password" como parámetro
+        // Se ejecuta la funcion triggersignup del hook con un objeto con propiedades "email" y "password" como parámetro
         triggerSignup({email,password})
     }
 
@@ -69,7 +61,8 @@ const SignupScreen = ({navigation}) => {
                     placeholderTextColor="#EBEBEB"
                     placeholder='Password'
                     style={styles.textInput}
-                    // Cuando se establece secureTextEntry en true, el texto ingresado en el campo se muestra como una serie de puntos (****) en lugar del texto real.
+                    // Cuando se establece secureTextEntry en true, el texto ingresado en el campo se muestra como
+                    // una serie de puntos (****) en lugar del texto real.
                     secureTextEntry
                 />
                 {/* <TextInput
@@ -170,21 +163,3 @@ const styles = StyleSheet.create({
         marginTop: 64
     }
 })
-
-
-// import { StyleSheet, Text, View } from 'react-native'
-// import React from 'react'
-
-// const SignupScreen = () => {
-//   return (
-//     <View>
-//       <Text>SignupScreen</Text>
-//     </View>
-//   )
-// }
-
-// export default SignupScreen
-
-// const styles = StyleSheet.create({})
-
-

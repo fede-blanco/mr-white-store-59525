@@ -16,7 +16,8 @@ export default function Header({route, tag, category}) {
   const user = useSelector(state => state.authReducer.value.email)
   const dispatch = useDispatch()
 
-  // Función de logout personalizada que vacia el estado global del usuario y también lo elimina de la tabla sessions de la base de datos SQLite
+  // Función de logout personalizada que vacia el estado global del usuario y también
+  // lo elimina de la tabla sessions de la base de datos SQLite
   const onLogout = ()=>{
     dispatch(clearUser()) // Resetea propiedades del estado global de Redux
     clearSessions() // Elimina el registro de la sesión de la base de datos
@@ -31,7 +32,6 @@ export default function Header({route, tag, category}) {
             end={{ x: 1, y: 1 }}   // esquina inferior derecha
             style={styles.headerContainer}
         >
-    {/* <View style={styles.headerContainer}> */}
       <Text style={styles.title}>Mr.White store</Text>
       <MontserratText style={styles.subtitle}>Conseguí todo lo que necesitás</MontserratText>
       {
@@ -52,8 +52,6 @@ export default function Header({route, tag, category}) {
       {
         user &&  <Pressable onPress={onLogout} style={styles.access}><Icon name="logout" size={24} color="#fff" /></Pressable>
       }
-
-    {/* </View> */}
     </LinearGradient>
   )
 }
@@ -67,7 +65,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    //fontWeight: "bold",
     color: colors.amarillo,
     fontFamily: 'PressStart2P'
   },

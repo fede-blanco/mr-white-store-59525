@@ -1,9 +1,6 @@
 import { StyleSheet, Text, View, Pressable, Image, useWindowDimensions, FlatList, ScrollView, ActivityIndicator } from "react-native"
 import { colors } from "../global/colors.js"
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import products from "../data/products.json"
-import { useState, useEffect } from "react"
-import MontserratText from "../components/MontserratText.jsx"
 import { useSelector, useDispatch } from "react-redux"
 import { addItem } from "../features/cart/cartSlice.js";
 import { useGetProductQuery } from "../services/shopService.js";
@@ -11,32 +8,13 @@ import { useGetProductQuery } from "../services/shopService.js";
 
 
 const ProductScreen = ({ route, navigation }) => {
-
-  // const [productFound, setProductFound] = useState({})
-  //Ahora el productId conseguido de "params" es el que se utilizará para realizar las acciones
-  // const {productId} = route.params
   const { width, height } = useWindowDimensions()
 
   const productId = useSelector(state => state.shopReducer.value.productSelectedId)
-  console.log("productId", productId);
 
   const dispatch = useDispatch()
 
   const { data: productFound, error, isLoading } = useGetProductQuery(productId);
-  console.log(`ProductFound: --->\n\n `, productFound);
-  
-  
-
-  
-  // console.log("*****   Producto seleccionado    ****");
-  // for( const prop in productFound) {
-  //   console.log(`${prop}:  ${productFound[prop]}`);
-  // }
-  // console.log("*************************************");
- 
-  // useEffect(() => {
-  //   setProductFound(products.find(product => product.id === productId))
-  // }, [productId])
   
   return (
     <>

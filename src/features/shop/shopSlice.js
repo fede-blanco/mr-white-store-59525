@@ -7,23 +7,18 @@ export const shopSlice = createSlice({
   name: 'shop',
   initialState: {
     value: {
-      // categories: categories,
-      // products: products,
       categorySelected: "",
-      // productsFilteredByCategory:[],
       productSelectedId: null,
     }
   },
   reducers: {
       // setCategory es una función que recibe el estado actual y una "action" que utilizará para modificar el estado
       setCategory: (state, action) => {
-        // cuando se ejecute filtrará los productos dependiendo de lo que venga en "action.payload" y modificará la propiedad "productsFilteredByCategory" del "state"
-        // state.value.productsFilteredByCategory = products.filter(product=>product.category.toLowerCase() === action.payload.toLowerCase())
-        // cuando se ejecute le dará como valor a "state.value.categorySelected" lo que venga en el payload del "action"
+        // Cuando se ejecute le dará como valor a "state.value.categorySelected" lo que venga en el payload del "action"
         state.value.categorySelected = action.payload
       },
       setProductSelectedId: (state,action) => {
-        // cuando se ejecute le dará como valor a "state.value.productSelectedId" lo que venga en el payload del "action"
+        // Cuando se ejecute le dará como valor a "state.value.productSelectedId" lo que venga en el payload del "action"
         state.value.productSelectedId = action.payload
       }
   }
@@ -31,8 +26,7 @@ export const shopSlice = createSlice({
 
 export const {setCategory, setProductSelectedId} = shopSlice.actions
 
-
-//exporto por default la función "reducer" de la slice creada
+// Exporto por default la función "reducer" de la slice creada
 export default shopSlice.reducer
 
 

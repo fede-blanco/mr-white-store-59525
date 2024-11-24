@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, FlatList,Image, Pressable, useWindowDimensions, ActivityIndicator } from 'react-native'
+import { StyleSheet, Text, FlatList,Image, Pressable, useWindowDimensions, ActivityIndicator } from 'react-native'
 //import categories from "../data/categories.json" //Importado directamente del .json
-import { useSelector, useDispatch } from 'react-redux' // Importamos métodos para acceder al estado de redux y para modificarlo
+import { useDispatch } from 'react-redux' // Importamos métodos para acceder al estado de redux y para modificarlo
 //importo setCategory que es un método reducer para modificar la propiedad "category" del estado
 import { setCategory } from '../features/shop/shopSlice.js'
 import FlatCard from '../components/FlatCard'
@@ -11,32 +11,18 @@ import { useEffect, useState } from 'react'
 import { useGetCategoriesQuery } from '../services/shopService.js'
 
 const CategoriesScreen = ({navigation}) => {
-  
-
-  //useSelector no solo trae el estado sino que lo vuelve a traer cuando se actualiza.
-  //Devuelve el estado y del estado nbosotros sacamos lo que haya dentro de la slice "ShopReducer" indicado en "store.js" que es el extraido en "shopSlice.js", en "value" que es donde se guarda el valor del estado, lo que haya en la propiedad "categories"
-  // const categories = useSelector((state) => state.shopReducer.value.categories)
-
-  // traemos la información utilizando el hook de RTK Query que devuelve 3 elementos.
-  // la información almacenada en la base de datos devuelta por la petición se aloja en "data" la cual podemos renombrar para que se plique a todas las existencias de "categories" ya utilizadas.
+  // Traemos la información utilizando el hook de RTK Query que devuelve 3 elementos.
+  // La información almacenada en la base de datos devuelta por la petición se aloja en "data" la cual podemos renombrar
+  // para que se plique a todas las existencias de "categories" ya utilizadas.
   const { data: categories, error, isLoading } = useGetCategoriesQuery()
-
-  // Hacemos un log para ver si obtiene la información
-  console.log("categories from firebase", categories);
-  console.log("error from firebase", error);
-  console.log("isLoading from firebase", isLoading);
   
-
-
   //creamos la variable "dispatch" de la cual luego utilizaremos todos los métodos que contiene
   const dispatch = useDispatch()
 
+  //Se obtienen el alto y ancho de pantalla con un hook nativo de "react-native"
   const {width, height} = useWindowDimensions()
-  // console.log("width", width);
-  // console.log("height", height);
-  
+  //Variable de estado que indica si se esta en modo horizontal o vertical
   const [isPortrait, setIsPortrait] = useState(true)
-  // console.log("isPortrait 1", isPortrait);
   
   useEffect(() => {
     if(width > height){
@@ -45,19 +31,19 @@ const CategoriesScreen = ({navigation}) => {
       setIsPortrait(true)
     }
   }, [width, height])
-  // console.log("isPortrait 2", isPortrait);
   
   
     const renderCategoryItem = ({item,index}) =>{
         return(
           // En este caso el titulo de estos items son los nombres de las categorias
-          //A la funcion "navigation.navigate" le pasamos como primer parámetro la ruta a la que queremos que navege de las definidas en "ShopNavigator.jsx" y luego de eso le pasamos un objeto con props
-          // <Pressable onPress={()=>navigation.navigate('Productos',{category:item.title})}>
+          // A la funcion "navigation.navigate" se le pasa como primer parámetro la ruta a la que se quiere que navege
+          // de las definidas en "ShopNavigator.jsx" (y luego de eso se le podría pasar un objeto con props)
           <Pressable onPress={
             ()=>{
-              //lo que mandemos como parámetro en el setCategory será el "action.payload" que recibe el reducer para trabajar
+              //lo que se mande como parámetro en el setCategory será el "action.payload" que recibe el reducer para trabajar
               dispatch(setCategory(item.title))
-              //en el navigation ya no seríaimprescindible pasar el parámetro del objeto con opciones dado que podríamos tomar ese mismo date del estado en donde lo necesitemos
+              //en el navigation ya no seríaimprescindible pasar el parámetro del objeto con opciones dado que podríamos
+              // tomar ese mismo date del estado en donde lo necesitemos
               navigation.navigate('Productos')
           }
           }>

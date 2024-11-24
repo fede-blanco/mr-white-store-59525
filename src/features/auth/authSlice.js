@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Creo y exporto la slice con la función "createSlice" importada de redux/toolkit y le doy los valores iniciales del estado
+// Creo y exporto la slice con la función "createSlice" importada de redux/toolkit y
+// le doy los valores iniciales del estado
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -13,7 +14,7 @@ export const authSlice = createSlice({
   },
   reducers: {
     setUser: (state,action) => {
-      // seteamos los valores con lo que viene en action.payload (que es la respuesta de auth)
+      // seteo los valores con lo que viene en action.payload (que es la respuesta de auth)
       state.value.email = action.payload.email
       state.value.token = action.payload.idToken
       state.value.localId = action.payload.localId
@@ -33,7 +34,7 @@ export const authSlice = createSlice({
 export const {setUser, clearUser, setProfilePicture} = authSlice.actions
 
 
-//exporto por default la función "reducer" de la slice creada
+// Exporto por default la función "reducer" de la slice creada
 export default authSlice.reducer
 
 

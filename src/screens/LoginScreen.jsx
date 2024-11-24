@@ -14,7 +14,6 @@ const LoginScreen = ({navigation}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
     const [rememberMe, setRememberMe] = useState(false)
 
     const dispatch = useDispatch()
@@ -31,18 +30,16 @@ const LoginScreen = ({navigation}) => {
             console.log("Usuario logueado con éxito")
             //agregamos la info del usuario al estado de usuario global
             dispatch(setUser(result.data))
-            // En caso de autenticarse satisfactoriamente y de que "rememberMe" sea true guardamos la info del usuario en SQLite
+            // En caso de autenticarse satisfactoriamente y de que "rememberMe" sea true se guarda la info del usuario en SQLite
             if(rememberMe){
               clearSessions().then(() => console.log("\nsesiones eliminadas\n")).catch(error => console.log("\nError al eliminar las sesiones: \n", error))
-              // console.log("result data:", result.data)
-              console.log("Insertando nueva sesión -->", rememberMe);
               insertSession({
                   localId: result.data.localId,
                   email: result.data.email,
                   token: result.data.idToken
                 })
                   .then((result) => console.log("Exito al guardar el usuario en la db",result))
-                  .catch((error)=>console.log("error al guardar el usuario en la db",error)
+                  .catch((error)=>console.log("Error al guardar el usuario en la db",error)
                   )
             }
         }

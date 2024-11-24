@@ -1,3 +1,5 @@
+// Variable donde se albergan los colores utilizados a lo largo de la aplicación
+// con fines prácticos
 export const colors = {
   azulCobalto:"#0047AB",
   verde:"#40d226",
