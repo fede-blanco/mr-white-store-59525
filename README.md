@@ -1,4 +1,4 @@
-<h1> Mr.White Store | Ecommerce Mobile App </h1>
+<h1> Mr.White Store :copyright: | Ecommerce Mobile App :rocket: </h1>
 <h4>Tienda de artículos creada con `react-native` para el `curso de desarrollo de aplicaciones mobiles - comisión 59525` - `Coderhouse 2024`</h4>
 
 ---
@@ -27,7 +27,7 @@
 ---
 
 > [!IMPORTANT]
-> Herramientas Utilizadas:
+> Herramientas Utilizadas :crystal_ball:
 
 * **HTML5** -----------------------> Uso de forma mínima en el index y en las etiquetas semánticas junto a la escritura en jsx.
 * **CSS** ---------------------------> Para dar los estilos.
@@ -75,9 +75,45 @@
 ![Play Store](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)
 ![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)
 
----
+<hr>
 
+> Instalación y Run :cd:
 
-   
+* Clonar el repositorio: git clone https://github.com/fede-blanco/mr-white-store-59525.git
+* Instalar las dependencias: npm install
+* Iniciar la aplicación: npx expo start
 
+<hr>
 
+> CAPTURAS :camera:
+
+| **Registro** | **Login** | **Categorías** |
+|:--:|:--:|:--:|
+| ![Registro](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_register.png?raw=true) | ![Login](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_login.png?raw=true) | ![Categorías](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_categorias.png?raw=true) |
+
+| **Lista de productos** | **Detalles del producto 1** | **Detalles del producto 2** | 
+|:--:|:--:|:--:|
+| ![Lista de productos](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_lista_productos.png?raw=true) | ![Detalles del producto](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_detalles_producto.png?raw=true) | ![Detalles del producto](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_detalles_producto_2.png?raw=true) |
+
+| **Carrito vacío** | **Carrito con productos** |
+|:--:|:--:|
+| ![Carrito vacío](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_carrito_1.png?raw=true) | ![Carrito con productos](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_carrito_2.png?raw=true) |
+
+| **Lista de recibos vacía** | **Lista de recibos con recibo generado** |
+|:--:|:--:|
+| ![Lista de recibos vacía](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_recibos_1.png?raw=true) | ![Lista de recibos con contenido](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_recibos_2.png?raw=true) |
+
+| **Perfil** | **Petición de permisos cámara** | **Cámara** | 
+|:--:|:--:|:--:|
+| ![Perfil](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_perfil_1.png?raw=true) | ![Petición de permisos cámara](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_perfil_permisos_camara.png?raw=true) | ![Cámara](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_perfil_camara.png?raw=true) |
+
+| **Lugares favoritos** | **Toast de ubicación encontrada** | **Nuevo lugar favorito** | 
+|:--:|:--:|:--:|
+| ![Lugares favoritos](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_lugares_favoritos_1.png?raw=true) | ![Toast de ubicación encontrada](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_lugares_favoritos_2.png?raw=true) | ![Cámara](https://github.com/fede-blanco/mr-white-store-59525/blob/main/assets/captures_readme/capture_lugares_favoritos_3.png?raw=true) |
+
+<br><br>
+<hr>
+<h3>Muchas gracias por pasar! :metal: <h3>
+<h3>Espero que te haya gustado mi proyecto! :rocket: <h3>
+<h5>Federico M. Blanco</h5>
+<br>
